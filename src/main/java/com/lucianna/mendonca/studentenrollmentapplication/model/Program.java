@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "program")
@@ -26,19 +27,21 @@ public class Program {
     private String professor;
 
     // One program can have multiple enrollments
-    @OneToMany(mappedBy = "program", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Enrollment> enrollments;
+    @OneToMany(mappedBy = "program", fetch = FetchType.LAZY)
+    private Set<Enrollment> enrollments;
 
     // Constructors
     public Program() {
     }
 
-    public Program(int programCode, String programName, String duration, BigDecimal fee, String professor) {
+    public Program(int programCode, String programName, String duration, BigDecimal fee,
+                   String professor, Set<Enrollment> enrollments) {
         this.programCode = programCode;
         this.programName = programName;
         this.duration = duration;
         this.fee = fee;
         this.professor = professor;
+        this.enrollments = enrollments;
     }
 
     // Getters and Setters
@@ -82,11 +85,11 @@ public class Program {
         this.professor = professor;
     }
 
-    public List<Enrollment> getEnrollments() {
+    public Set<Enrollment> getEnrollments() {
         return enrollments;
     }
 
-    public void setEnrollments(List<Enrollment> enrollments) {
+    public void setEnrollments(Set<Enrollment> enrollments) {
         this.enrollments = enrollments;
     }
 }
