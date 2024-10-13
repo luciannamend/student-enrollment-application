@@ -1,8 +1,10 @@
 package com.lucianna.mendonca.studentenrollmentapplication.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "student")
@@ -34,19 +36,20 @@ public class Student {
     @Column(name = "postal_code")
     private String postalCode;
 
+    @Nullable
     @Column(name = "technical_skills")
     private String technicalSkills;
 
     // One student can have multiple enrollments
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Enrollment> enrollments;
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    private Set<Enrollment> enrollments;
 
     //Constructors
     public Student() {
     }
 
     public Student(Long studentId, String userName, String password, String firstName, String lastName, String address,
-                   String city, String postalCode, String technicalSkills) {
+                   String city, String postalCode, String technicalSkills, Set<Enrollment> enrollments) {
         this.studentId = studentId;
         this.userName = userName;
         this.password = password;
@@ -56,6 +59,7 @@ public class Student {
         this.city = city;
         this.postalCode = postalCode;
         this.technicalSkills = technicalSkills;
+        this.enrollments = enrollments;
     }
 
     // Getters and Setters
@@ -131,11 +135,11 @@ public class Student {
         this.technicalSkills = technicalSkills;
     }
 
-    public List<Enrollment> getEnrollments() {
+    public Set<Enrollment> getEnrollments() {
         return enrollments;
     }
 
-    public void setEnrollments(List<Enrollment> enrollments) {
+    public void setEnrollments(Set<Enrollment> enrollments) {
         this.enrollments = enrollments;
     }
 }
