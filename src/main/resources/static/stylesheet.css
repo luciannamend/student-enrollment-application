@@ -4,48 +4,71 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     width: 30%;
-    margin: auto;
     overflow: hidden;
     padding: 20px;
     background: white;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    margin: 50px auto auto;
 }
+
 h2 {
     text-align: center;
     color: #333;
 }
+
 .form-section {
     margin: 20px 0;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #535763;
     border-radius: 5px;
     background-color: #fafafa;
 }
+
+.form-section {
+    display: none;
+}
+
+.toggle-btns {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn.active {
+    background-color: #7a7979;
+    color: rgba(40, 44, 52, 0.55);
+}
+
+.btn {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #3b3d42;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    background-color: #535763;
+}
+
 .form-group {
     margin-bottom: 15px;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
 }
+
 .form-group input {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-.btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.btn:hover {
-    background-color: #218838;
 }

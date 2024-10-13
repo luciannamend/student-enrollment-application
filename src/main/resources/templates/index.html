@@ -7,11 +7,17 @@
     <link rel="stylesheet" type="text/css" href="/stylesheet.css">
 </head>
 <body>
-
 <div class="container">
     <h2>Student Enrollment System</h2>
 
-    <div class="form-section">
+    <!-- Buttons to toggle forms -->
+    <div class="toggle-btns">
+        <button onclick="showForm('register', this)" class="btn">Register</button>
+        <button onclick="showForm('login', this)" class="btn">Login</button>
+    </div>
+
+    <!-- Register form -->
+    <div class="form-section" id="register-form">
         <h3>Register</h3>
         <form action="/register" method="POST">
             <div class="form-group">
@@ -32,27 +38,26 @@
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="address" id="address" name="address" required>
+                <input type="text" id="address" name="address" required>
             </div>
             <div class="form-group">
                 <label for="city">City</label>
-                <input type="city" id="city" name="city" required>
+                <input type="text" id="city" name="city" required>
             </div>
             <div class="form-group">
                 <label for="postalCode">Postal Code</label>
-                <input type="postalCode" id="postalCode" name="postalCode" required>
+                <input type="text" id="postalCode" name="postalCode" required>
             </div>
             <div class="form-group">
                 <label for="technicalSkills">Technical Skills</label>
-                <input type="technicalSkills" id="technicalSkills" name="technicalSkills">
+                <input type="text" id="technicalSkills" name="technicalSkills">
             </div>
-
-
             <button type="submit" class="btn">Register</button>
         </form>
     </div>
 
-    <div class="form-section">
+    <!-- Login form -->
+    <div class="form-section" id="login-form">
         <h3>Login</h3>
         <form action="/login" method="POST">
             <div class="form-group">
@@ -67,5 +72,33 @@
         </form>
     </div>
 </div>
+
+<script>
+    // Function to show the selected form and highlight the selected button
+    function showForm(formType, btn) {
+        // Hide both forms
+        document.getElementById('register-form').style.display = 'none';
+        document.getElementById('login-form').style.display = 'none';
+
+        // Remove the 'active' class from both buttons
+        var buttons = document.querySelectorAll('.btn');
+        buttons.forEach(function(button) {
+            button.classList.remove('active');
+        });
+
+        // Show the selected form
+        if (formType === 'register') {
+            document.getElementById('register-form').style.display = 'block';
+        } else if (formType === 'login') {
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        // Add the 'active' class to the clicked button
+        btn.classList.add('active');
+    }
+
+    // Initially display the register form
+    showForm('register', document.querySelector('.toggle-btns .btn'));
+</script>
 </body>
 </html>
