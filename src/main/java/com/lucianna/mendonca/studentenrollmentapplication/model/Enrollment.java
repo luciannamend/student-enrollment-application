@@ -33,5 +33,56 @@ public class Enrollment {
     @Column(name = "amount_paid")
     private BigDecimal amountPaid;
 
-    // Getters and Setters (omitted for brevity)
+    // Constructors
+    public Enrollment() {
+    }
+
+    public Enrollment(Long applicationNo, Student student, Program program, LocalDate startDate, BigDecimal amountPaid) {
+        this.applicationNo = applicationNo;
+        this.student = student;
+        this.program = program;
+        this.startDate = startDate;
+        this.amountPaid = amountPaid;
+    }
+
+    // Getters and Setters
+    public Long getApplicationNo() {
+        return applicationNo;
+    }
+
+    public void setApplicationNo(Long applicationNo) {
+        this.applicationNo = applicationNo;
+    }
+
+    public @NotNull Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(@NotNull Student student) {
+        this.student = student;
+    }
+
+    public @NotNull Program getProgram() {
+        return program;
+    }
+
+    public void setProgram(@NotNull Program program) {
+        this.program = program;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public BigDecimal getAmountPaid() {
+        return amountPaid;
+    }
+
+    public void setAmountPaid(BigDecimal amountPaid) {
+        this.amountPaid = amountPaid;
+    }
 }
