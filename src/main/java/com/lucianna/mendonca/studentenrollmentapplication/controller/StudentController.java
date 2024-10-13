@@ -4,7 +4,6 @@ import com.lucianna.mendonca.studentenrollmentapplication.model.Student;
 import com.lucianna.mendonca.studentenrollmentapplication.repository.EnrollmentRepository;
 import com.lucianna.mendonca.studentenrollmentapplication.repository.ProgramRepository;
 import com.lucianna.mendonca.studentenrollmentapplication.repository.StudentRepository;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,19 +26,22 @@ public class StudentController {
     @Autowired
     private EnrollmentRepository enrollmentRepository;
 
+    private byte[] salt = new byte[6];
+
     // Root page calls index.html
     @GetMapping("/")
     public String showForm(Model model){
         return "index";
     }
 
+    // Save student
     @PostMapping("/register")
     public String registerStudent(@ModelAttribute("student") Student student){
 
-//        System.out.println(student.getPassword());
-//        String hashedPassword = hashPassword(student.getPassword(), new byte[3]);
-//        student.setPassword(hashedPassword);
-//        System.out.println(hashedPassword);
+        System.out.println(student.getPassword());
+        String hashedPassword = hashPassword(student.getPassword(), salt);
+        student.setPassword(hashedPassword);
+        System.out.println(hashedPassword);
 
         try{
             studentRepository.save(student);
@@ -54,22 +56,23 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/login")
+    // Student login
+    @PostMapping("/login")
     public String login(@RequestParam("login_username") String username, @RequestParam("login_password") String password,
                         Model model) {
         // find user by userName
         Student retrievedUser = studentRepository.findByUserName(username);
 
-        if ((retrievedUser != null)){
-            // compare password with student.getPassword
-            if(password.equals(retrievedUser.getPassword()) ){
-                System.out.println("SUCCESSFUL LOGIN");
-                return "program";
-            }
+        // Hash the provided password with the salt
+        String hashedPassword = hashPassword(password, salt);
+
+        // Compare the hashed password with the stored hashed password
+        if (hashedPassword.equals(retrievedUser.getPassword())) {
+            System.out.println("SUCCESSFUL LOGIN");
+            return "program"; // Redirect to program page
         }
         return "index";
     }
-
 
     // Generate a random salt
     public static byte[] generateSalt() {
@@ -79,6 +82,7 @@ public class StudentController {
         return salt;
     }
 
+    // Hash password
     public static String hashPassword(String password, byte[] salt) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
