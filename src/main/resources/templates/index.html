@@ -19,7 +19,7 @@
     <!-- Register form -->
     <div class="form-section" id="register-form">
         <h3>Register</h3>
-        <form action="/register" method="POST">
+        <form action="/register" method="POST" th:object="${student}">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="userName" required>
@@ -59,7 +59,7 @@
     <!-- Login form -->
     <div class="form-section" id="login-form">
         <h3>Login</h3>
-        <form action="/login" method="POST">
+        <form action="/login" method="GET">
             <div class="form-group">
                 <label for="login_username">Username</label>
                 <input type="text" id="login_username" name="login_username" required>
