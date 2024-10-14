@@ -40,6 +40,8 @@ public class ProgramService {
     public List<Program> getAllPrograms(){
         List<Program> allPrograms = programRepository.findAll();
 
+        System.out.println(allPrograms);
+
         // return programs if it's not empty
         if(!allPrograms.isEmpty()){
             return allPrograms;

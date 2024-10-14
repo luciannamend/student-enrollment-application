@@ -27,21 +27,23 @@ public class Program {
     private String professor;
 
     // One program can have multiple enrollments
-    @OneToMany(mappedBy = "program", fetch = FetchType.LAZY)
-    private Set<Enrollment> enrollments;
+    @OneToMany()
+    private List<Enrollment> enrollments;
+
+    @OneToMany()
+    private List<Student> students;
 
     // Constructors
     public Program() {
     }
 
     public Program(int programCode, String programName, String duration, BigDecimal fee,
-                   String professor, Set<Enrollment> enrollments) {
+                   String professor) {
         this.programCode = programCode;
         this.programName = programName;
         this.duration = duration;
         this.fee = fee;
         this.professor = professor;
-        this.enrollments = enrollments;
     }
 
     // Getters and Setters
@@ -85,11 +87,19 @@ public class Program {
         this.professor = professor;
     }
 
-    public Set<Enrollment> getEnrollments() {
+    public List<Enrollment> getEnrollments() {
         return enrollments;
     }
 
-    public void setEnrollments(Set<Enrollment> enrollments) {
+    public void setEnrollments(List<Enrollment> enrollments) {
         this.enrollments = enrollments;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 }
