@@ -62,7 +62,8 @@ public class StudentController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("login_username") String username, @RequestParam("login_password") String password,
+    public String login(@RequestParam("login_username") String username,
+                        @RequestParam("login_password") String password,
                         RedirectAttributes redirectAttributes) {
         // find user by userName
         Student retrievedStudent = studentRepository.findByUserName(username);
