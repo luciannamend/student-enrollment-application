@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Program page</title>
+    <title>Program Enrollment</title>
+    <link rel="stylesheet" type="text/css" href="/programstyle.css">
 </head>
 <body>
+    <div class="container">
+    <h3>Select the program you want to enroll in:</h3>
+        <div class="list-group">
+            <ul>
+                <!-- Loop through the programs and display each one -->
+                <li th:each="program : ${programs}">
+                    <span th:text="${program.programName}"></span>,
+                    Duration: <span th:text="${program.duration}"></span>,
+                    Fee: $<span th:text="${program.fee}"></span>
 
-<h3>Select the program you want to enroll in:</h3>
-<ul>
-    <!-- Loop through the programs and display each one -->
-    <li th:each="program : ${programs}">
-        Program Name: <span th:text="${program.programName}"></span>,
-        Duration: <span th:text="${program.duration}"></span>,
-        Fee: <span th:text="${program.fee}"></span>
-
-        <!-- Form to enroll in this program -->
-        <form action="/enroll" method="POST">
-            <input type="hidden" name="programCode" th:value="${program.programCode}" />
-            <input type="hidden" name="studentId" th:value="${student.studentId}" />
-            <button type="submit">Enroll</button>
-        </form>
-    </li>
-</ul>
+                    <!-- Form to enroll in this program -->
+                    <form action="/process-payment" method="POST">
+                        <input  name="programCode" th:value="${program.programCode}" />
+                        <input  name="studentId" th:value="${student.studentId}" />
+                        <button type="submit">Select</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
