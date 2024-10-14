@@ -41,15 +41,16 @@ public class Student {
     private String technicalSkills;
 
     // One student can have multiple enrollments
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
-    private Set<Enrollment> enrollments;
+    @OneToMany()
+    private List<Enrollment> enrollments;
+
 
     //Constructors
     public Student() {
     }
 
     public Student(Long studentId, String userName, String password, String firstName, String lastName, String address,
-                   String city, String postalCode, String technicalSkills, Set<Enrollment> enrollments) {
+                   String city, String postalCode, String technicalSkills) {
         this.studentId = studentId;
         this.userName = userName;
         this.password = password;
@@ -59,10 +60,10 @@ public class Student {
         this.city = city;
         this.postalCode = postalCode;
         this.technicalSkills = technicalSkills;
-        this.enrollments = enrollments;
     }
 
     // Getters and Setters
+
     public Long getStudentId() {
         return studentId;
     }
@@ -127,19 +128,20 @@ public class Student {
         this.postalCode = postalCode;
     }
 
+    @Nullable
     public String getTechnicalSkills() {
         return technicalSkills;
     }
 
-    public void setTechnicalSkills(String technicalSkills) {
+    public void setTechnicalSkills(@Nullable String technicalSkills) {
         this.technicalSkills = technicalSkills;
     }
 
-    public Set<Enrollment> getEnrollments() {
+    public List<Enrollment> getEnrollments() {
         return enrollments;
     }
 
-    public void setEnrollments(Set<Enrollment> enrollments) {
+    public void setEnrollments(List<Enrollment> enrollments) {
         this.enrollments = enrollments;
     }
 }
