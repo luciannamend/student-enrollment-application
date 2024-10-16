@@ -2,13 +2,11 @@ package com.lucianna.mendonca.studentenrollmentapplication.controller;
 
 import com.lucianna.mendonca.studentenrollmentapplication.model.Student;
 import com.lucianna.mendonca.studentenrollmentapplication.repository.StudentRepository;
+import jakarta.servlet.http.PushBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.MessageDigest;
@@ -64,11 +62,67 @@ public class StudentController {
             // Redirect student obj
             redirectAttributes.addFlashAttribute("student", retrievedStudent);
             // Redirect to the programs page
-            return "redirect:/programs";
+            return "redirect:/studentProfile";
         }
         // if login not successful, redirect to index page
         return "index";
     }
+
+    // Go to student profile
+    @GetMapping("/studentProfile")
+    public String studentProfile(@ModelAttribute("student") Student student, Model model){
+        // Add the student object to the model to display on the profile page
+        model.addAttribute("student", student);
+        return "studentprofile";
+    }
+
+    // Displauy edit prof
+    @GetMapping("/editProfile")
+    public String editStudentProfile(@RequestParam("studentId") Long studentId, Model model) {
+        // Find student by ID
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+        // Add the student to the model
+        model.addAttribute("student", student);
+        return "editProfile";
+    }
+
+    @PostMapping("/updateProfile")
+    public String updateStudentProfile(@RequestParam("studentId") Long studentId,
+                                       @RequestParam("firstName") String firstName,
+                                       @RequestParam("lastName") String lastName,
+                                       @RequestParam("address") String address,
+                                       @RequestParam("city") String city,
+                                       @RequestParam("postalCode") String postalCode,
+                                       @RequestParam("technicalSkills") String technicalSkills,
+                                       @RequestParam(value = "password", required = false) String password,
+                                       RedirectAttributes redirectAttributes) {
+        // Find student by ID
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        // Update student fields
+        student.setFirstName(firstName);
+        student.setLastName(lastName);
+        student.setAddress(address);
+        student.setCity(city);
+        student.setPostalCode(postalCode);
+        student.setTechnicalSkills(technicalSkills);
+
+        if (password != null && !password.isEmpty()) {
+            String hashedPassword = hashPassword(password, salt);
+            student.setPassword(hashedPassword);
+        }
+
+        // Save the updated student profile
+        studentRepository.save(student);
+
+        // Redirect to the student profile page with updated information
+        redirectAttributes.addFlashAttribute("student", student);
+        return "redirect:/studentProfile";
+    }
+
+
 
     // Method to hash password
     public static String hashPassword(String password, byte[] salt) {

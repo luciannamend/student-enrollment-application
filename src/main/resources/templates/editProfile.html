@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+</head>
+<body>
+  <div class="container">
+    <h1>EDIT YOUR PROFILE</h1>
+    <!-- Form to edit student profile -->
+    <form action="/updateProfile" method="POST">
+      <input type="hidden" name="studentId" th:value="${student.studentId}" />
+      <!-- First Name -->
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" th:value="${student.firstName}" required><br><br>
+      <!-- Last Name -->
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" th:value="${student.lastName}" required><br><br>
+      <!-- Address -->
+      <label for="address">Address:</label>
+      <input type="address" id="address" name="address" th:value="${student.address}" required><br><br>
+      <!-- City -->
+      <label for="city">City:</label>
+      <input type="city" id="city" name="city" th:value="${student.city}" required><br><br>
+      <!-- Address -->
+      <label for="postalCode">Postal Code:</label>
+      <input type="postalCode" id="postalCode" name="postalCode" th:value="${student.postalCode}" required><br><br>
+      <!-- Address -->
+      <label for="technicalSkills">technicalSkills:</label>
+      <input type="technicalSkills" id="technicalSkills" name="technicalSkills" th:value="${student.technicalSkills}" ><br><br>
+      <!-- Password -->
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <!-- Submit button -->
+      <button type="submit">Update Profile</button>
+    </form>
+    <!-- Back to Profile -->
+    <form action="/studentProfile" method="Get">
+      <input type="hidden" name="studentId" th:value="${student.studentId}" />
+      <button>Back to Profile</button>
+    </form>
+  </div>
+</body>
+</html>

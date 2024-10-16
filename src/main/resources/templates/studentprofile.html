@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>STUDENT PROFILE</h1>
+
+    <p>Hello, <span th:text="${student.firstName}"></span></p>
+
+    <!-- Programs Button -->
+    <form action="/programs" method="GET">
+        <input type="hidden" name="studentId" th:value="${student.studentId}" />
+        <button>Programs</button>
+    </form>
+
+    <!-- Edit Profile Button -->
+    <form action="/editProfile" method="Get">
+        <input type="hidden" name="studentId" th:value="${student.studentId}" />
+        <button>Edit Profile</button>
+    </form>
+
+</body>
+</html>
