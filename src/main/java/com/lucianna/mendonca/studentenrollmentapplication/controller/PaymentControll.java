@@ -26,15 +26,18 @@ public class PaymentControll {
     @GetMapping("/payment-details")
     public String showPaymentDetails(Model model) {
 
+        System.out.println(model);
+
         // Check if student and program are available in the model
         if (model.containsAttribute("student") && model.containsAttribute("program")) {
+
             return "paymentdetail"; // Return the view for payment details
+
         } else {
             // Handle the case where student or program is missing
-            return "redirect:/programs"; // Redirect to the program selection page if no data
+            return "redirect:/programs";
         }
     }
-
 
     @PostMapping("/process-payment")
     public String processPayment(@RequestParam("programCode") Integer programCode,

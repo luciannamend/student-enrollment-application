@@ -18,8 +18,8 @@
 
                     <!-- Form to enroll in this program -->
                     <form action="/process-payment" method="POST">
-                        <input  name="programCode" th:value="${program.programCode}" />
-                        <input  name="studentId" th:value="${student.studentId}" />
+                        <input type="hidden" name="programCode" th:value="${program.programCode}" />
+                        <input type="hidden" name="studentId" th:value="${student.studentId}" />
                         <button type="submit">Select</button>
                     </form>
                 </li>

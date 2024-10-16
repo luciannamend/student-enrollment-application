@@ -30,21 +30,22 @@ public class EnrollmentController {
 
     @PostMapping("/enroll")
     public String enrollInProgram(@ModelAttribute ("student") Student student,
-                                  @ModelAttribute("program") Program selectedProgram) {
+                                  @ModelAttribute("program") Program program) {
 
+        // Program selectedProgram = programRepository.findByProgramCode(program);
 
         // Create a new enrollment record
         Enrollment enrollment = new Enrollment();
         enrollment.setStudent(student);
-        enrollment.setProgram(selectedProgram);
-        enrollment.setStartDate(LocalDate.of(2025, 01, 16)); // Set the current date as the start date
-        enrollment.setAmountPaid(selectedProgram.getFee());
+        enrollment.setProgram(program);
+        enrollment.setStartDate(LocalDate.of(2025, 01, 16));
+        enrollment.setAmountPaid(program.getFee());
 
         // Save the enrollment in the database
         enrollmentRepository.save(enrollment);
 
         // Return the view with the enrollment confirmation
-        return "enrollmentcompleted"; // A view that confirms the enrollment
+        return "enrollmentcompleted";
     }
 }
 
