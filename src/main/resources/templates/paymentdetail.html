@@ -10,10 +10,8 @@
         <h2> Enrollment Checkout </h2>
         <h3>Program: <span th:text="${program.programName}"></span></h3>
         <h3>Total: $<span th:text="${program.fee}"></span></h3>
-
         <p>Please enter your credit card details to pay the application processing fee.</p>
         <form action="/enroll" method="POST">
-
             <!-- Cardholder Name -->
             <div class="form-group">
                 <input type="hidden" th:value="${student.studentId}" name="studentId" />
@@ -38,7 +36,6 @@
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" maxlength="3" pattern="\d{3}" required>
             </div>
-
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="submit" class="btn-submit">Submit Payment</button>

@@ -10,16 +10,17 @@
     <h3>Select the program you want to enroll in:</h3>
         <div class="list-group">
             <ul>
-                <!-- Loop through the programs and display each one -->
+                <!-- Loop through the programs and display each one as list-->
                 <li th:each="program : ${programs}">
                     <span th:text="${program.programName}"></span>,
                     Duration: <span th:text="${program.duration}"></span>,
                     Fee: $<span th:text="${program.fee}"></span>
-
                     <!-- Form to enroll in this program -->
                     <form action="/process-payment" method="POST">
+                        <!--Info hidden just to be passed-->
                         <input type="hidden" name="programCode" th:value="${program.programCode}" />
                         <input type="hidden" name="studentId" th:value="${student.studentId}" />
+                        <!-- Select Program Button -->
                         <button type="submit">Select</button>
                     </form>
                 </li>
