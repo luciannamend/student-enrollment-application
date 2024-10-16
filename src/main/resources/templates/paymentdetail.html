@@ -7,11 +7,9 @@
 </head>
 <body>
     <div class="checkout-container">
-        <h2>Checkout</h2>
-
-        <p>Enrolling student: <span th:text="${student.userName}"></span></p>
-        <p>Program selected: <span th:text="${program.programName}"></span></p>
-        <p>Total amount: $<span th:text="${program.fee}"></span></p>
+        <h2> Enrollment Checkout </h2>
+        <h3>Program: <span th:text="${program.programName}"></span></h3>
+        <h3>Total: $<span th:text="${program.fee}"></span></h3>
 
         <p>Please enter your credit card details to pay the application processing fee.</p>
         <form action="/enroll" method="POST">
@@ -21,24 +19,23 @@
                 <input type="hidden" th:value="${student.studentId}" name="studentId" />
                 <input type="hidden" th:value="${program.programCode}" name="programCode" />
                 <input type="hidden" th:value="${program.fee}" name="fee" />
-
-                <label for="cardholder-name">Cardholder Name:</label>
+                <label for="cardholder-name">Cardholder Name</label>
                 <input type="text" id="cardholder-name" name="cardholderName" required>
             </div>
             <!-- Credit Card Number -->
             <div class="form-group">
-                <label for="card-number">Card Number:</label>
+                <label for="card-number">Card Number</label>
                 <input type="text" id="card-number" name="cardNumber" maxlength="16" pattern="\d{16}"
                        placeholder="1234567890123456" required>
             </div>
             <!-- Expiry Date -->
             <div class="form-group">
-                <label for="expiry-date">Expiry Date:</label>
+                <label for="expiry-date">Expiry Date</label>
                 <input type="text" id="expiry-date" name="expiryDate" placeholder="MM/YY" pattern="\d{2}/\d{2}" required>
             </div>
             <!-- CVV -->
             <div class="form-group">
-                <label for="cvv">CVV:</label>
+                <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" maxlength="3" pattern="\d{3}" required>
             </div>
 
