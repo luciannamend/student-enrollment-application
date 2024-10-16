@@ -2,7 +2,6 @@ package com.lucianna.mendonca.studentenrollmentapplication.controller;
 
 import com.lucianna.mendonca.studentenrollmentapplication.model.Student;
 import com.lucianna.mendonca.studentenrollmentapplication.repository.StudentRepository;
-import jakarta.servlet.http.PushBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,7 +72,7 @@ public class StudentController {
     public String studentProfile(@ModelAttribute("student") Student student, Model model){
         // Add the student object to the model to display on the profile page
         model.addAttribute("student", student);
-        return "studentprofile";
+        return "profile";
     }
 
     // Displauy edit prof
