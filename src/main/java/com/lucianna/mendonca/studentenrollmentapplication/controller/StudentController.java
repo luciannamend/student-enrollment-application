@@ -26,7 +26,7 @@ public class StudentController {
 
     // Save student on db
     @PostMapping("/register")
-    public String registerStudent(@ModelAttribute("student") Student student){
+    public String registerStudent(@ModelAttribute("student") Student student, RedirectAttributes redirectAttributes){
 
         // Hash the password
         String hashedPassword = hashPassword(student.getPassword(), salt);
@@ -35,9 +35,10 @@ public class StudentController {
         // save student
         try{
             studentRepository.save(student);
-            //todo
-            // let student know their registration was successful
-            return "index"; // go to index.html
+            // Add a success message to be displayed
+            redirectAttributes.addFlashAttribute("successMessage",
+                    "Registration successful! Click on Login to access your profile");
+            return "redirect:/";
         } catch (Exception e) {
             throw new RuntimeException(e);
         } catch (Throwable e) {

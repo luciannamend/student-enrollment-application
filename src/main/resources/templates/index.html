@@ -8,6 +8,12 @@
 <body>
 <div class="container">
     <h2>Student Enrollment System</h2>
+
+    <!-- Success Message -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <p th:text="${successMessage}"></p>
+    </div>
+
     <!-- Buttons to toggle forms -->
     <div class="toggle-btns">
         <button onclick="showForm('register', this)" class="btn">Register</button>
