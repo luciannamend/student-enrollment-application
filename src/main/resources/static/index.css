@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: rgba(23, 62, 135, 0.65);
+    background-color: rgb(180, 184, 171);
     margin: 0;
     padding: 0;
 }
@@ -9,7 +9,7 @@ body {
     width: 30%;
     overflow: hidden;
     padding: 20px;
-    background: white;
+    background: #F4F9E9;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 50px auto auto;
@@ -25,7 +25,7 @@ h2,h3 {
     padding: 20px;
     border: 1px solid #535763;
     border-radius: 5px;
-    background-color: #fafafa;
+    background-color: #EEF0EB;
 }
 
 .form-section {
@@ -40,14 +40,14 @@ h2,h3 {
 }
 
 .btn.active {
-    background-color: #7a7979;
+    background-color: #F4F9E9;
     color: rgba(40, 44, 52, 0.55);
 }
 
 .btn {
     padding: 10px 15px;
     cursor: pointer;
-    background-color: #32316c;
+    background-color: #153243;
     color: white;
     border: none;
     border-radius: 8px;
@@ -55,7 +55,7 @@ h2,h3 {
 }
 
 .btn:hover {
-    background-color: #48486e;
+    background-color: #284B63;
 }
 
 .form-group {

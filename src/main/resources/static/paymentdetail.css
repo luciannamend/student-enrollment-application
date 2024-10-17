@@ -6,14 +6,14 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #B4B8AB;
     padding: 20px;
 }
 
 .checkout-container {
     width: 40%;
     margin: 0 auto;
-    background-color: white;
+    background-color: #EEF0EB;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -52,14 +52,14 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-    border-color: #32316c;
+    border-color: #153243;
     outline: none;
 }
 
 .btn-submit {
     width: 100%;
     padding: 10px;
-    background-color: #32316c;
+    background-color: #153243;
     color: white;
     border: none;
     border-radius: 4px;
@@ -68,7 +68,7 @@ input[type="text"]:focus {
 }
 
 .btn-submit:hover {
-    background-color: #48486e;
+    background-color: #284B63;
 }
 
 /* Mobile responsiveness */

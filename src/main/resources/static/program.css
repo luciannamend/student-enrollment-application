@@ -6,14 +6,14 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: rgba(23, 62, 135, 0.65);
+    background-color: #B4B8AB;
     padding: 20px;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: #F4F9E9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@ ul {
 }
 
 li {
-    background-color: #e8e8e8;
+    background-color: #EEF0EB;
     border: 1px solid #d3d3d3;
     padding: 15px;
     margin-bottom: 15px;
@@ -41,7 +41,7 @@ li {
 }
 
 li:hover {
-    background-color: #d6e5fa;
+    background-color: rgba(40, 75, 99, 0.77);
 }
 
 li span {
@@ -55,7 +55,7 @@ form {
 
 button {
     padding: 8px 16px;
-    background-color: #32316c;
+    background-color: #153243;
     color: white;
     border: none;
     border-radius: 5px;
@@ -65,7 +65,7 @@ button {
 }
 
 .btn:hover {
-    background-color: #48486e;
+    background-color: #284B63;
 }
 
 /* Label styling */
@@ -94,7 +94,7 @@ input[type="password"] {
 
 /* Input focus effect */
 input:focus {
-    border-color: #007BFF;
+    border-color: rgba(40, 75, 99, 0.83);
     outline: none;
 }
 
