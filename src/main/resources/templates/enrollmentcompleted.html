@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Enrollment Confirmation</title>
+    <link rel="stylesheet" type="text/css" href="/profile.css">
 </head>
 <body>
-<h1> ENROLLMENT COMPLETED !!!</h1>
+    <div class="container">
+        <h1> ENROLLMENT COMPLETED !!!</h1>
+        <!-- Back to Profile -->
+        <form action="/studentProfile" method="Get">
+            <input type="hidden" name="studentId" th:value="${student.studentId}" />
+            <button>Back to Profile</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Profile</title>
+  <link rel="stylesheet" type="text/css" href="/program.css">
 </head>
 <body>
-  <div class="container">
+<div class="container">
     <h1>EDIT YOUR PROFILE</h1>
     <!-- Form to edit student profile -->
     <form action="/updateProfile" method="POST">
@@ -39,6 +40,6 @@
       <input type="hidden" name="studentId" th:value="${student.studentId}" />
       <button>Back to Profile</button>
     </form>
-  </div>
+</div>
 </body>
 </html>

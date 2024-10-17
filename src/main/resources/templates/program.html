@@ -26,6 +26,12 @@
                 </li>
             </ul>
         </div>
+
+        <!-- Back to Profile -->
+        <form action="/studentProfile" method="Get">
+            <input type="hidden" name="studentId" th:value="${student.studentId}" />
+            <button>Back to Profile</button>
+        </form>
     </div>
 </body>
 </html>
